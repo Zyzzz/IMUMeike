@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+<title>    </title>
+<script type="text/javascript" src="statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="statics/js/member_common.js"></script>
+<script type="text/javascript" src="statics/js/formvalidator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="statics/js/formvalidatorregex.js" charset="UTF-8"></script>
+<script type="text/javascript" src="statics/js/dialog.js"></script>
+<link href="statics/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="statics/css/dialog_simp.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript">
+<!--
+$(function(){
+	$.formValidator.initConfig({autotip:true,formid:"myform",onerror:function(msg){}});
+
+	$("#username").formValidator({onshow:"   ",onfocus:"  2  20    "}).inputValidator({min:2,max:20,onerror:"  2  20    "}).regexValidator({regexp:"ps_username",datatype:"enum",onerror:"      "}).ajaxValidator({
+	    type : "get",
+		url : "",
+		data :"m=member&c=index&a=public_checkname_ajax",
+		datatype : "html",
+		async:'false',
+		success : function(data){
+            if( data == "1" ) {
+                return true;
+			} else {
+                return false;
+			}
+		},
+		buttons: $("#dosubmit"),
+		onerror : "            ",
+		onwait : "  "
+	});
+	$("#password").formValidator({onshow:"  ",onfocus:" 6  20    "}).inputValidator({min:6,max:20,onerror:" 6  20    "});
+	$("#pwdconfirm").formValidator({onshow:"    ",onfocus:"         ",oncorrect:"         "}).compareValidator({desid:"password",operateor:"=",onerror:"         "});
+	$("#email").formValidator({onshow:"E-mail ",onfocus:"E-mail    ",oncorrect:"E-mail    "}).inputValidator({min:2,max:32,onerror:"E-mail6  32    "}).regexValidator({regexp:"email",datatype:"enum",onerror:"E-mail    "}).ajaxValidator({
+	    type : "get",
+		url : "",
+		data :"m=member&c=index&a=public_checkemail_ajax",
+		datatype : "html",
+		async:'false',
+		success : function(data){
+            if( data == "1" ) {
+                return true;
+			} else {
+                return false;
+			}
+		},
+		buttons: $("#dosubmit"),
+		onerror : "      E-Mail     ",
+		onwait : "  "
+	});
+	$("#nickname").formValidator({onshow:"  ",onfocus:" 2  20    "}).inputValidator({min:2,max:20,onerror:" 2  20    "}).regexValidator({regexp:"ps_username",datatype:"enum",onerror:"     "}).ajaxValidator({
+			type : "get",
+			url : "",
+			data :"m=member&c=index&a=public_checknickname_ajax",
+			datatype : "html",
+			async:'false',
+			success : function(data){
+				if( data == "1" ) {
+					return true;
+				} else {
+					return false;
+				}
+			},
+			buttons: $("#dosubmit"),
+			onerror : "    ",
+			onwait : "  "
+		});
+
+	$(":checkbox[name='protocol']").formValidator({tipid:"protocoltip",onshow:"    ",onfocus:"    "}).inputValidator({min:1,onerror:"    "});
+
+		$("#mobile_verify").formValidator({onshow:"请输入手机收到的验证码",onfocus:"请输入手机收到的验证码"}).inputValidator({min:1,onerror:"请输入手机收到的验证码"}).ajaxValidator({
+					type : "get",
+					url : "api.php",
+					data :"op=sms_idcheck&action=id_code",
+					datatype : "html",
+										async:"false",
+					success : function(data){
+						if( data == "1" ) {
+							return true;
+						} else {
+  							return false;
+						}
+					},
+					buttons: $("#dosubmit"),
+					onerror : "验证码错误",
+					onwait : "请稍候..."
+				});
+
+
+	});
+
+function show_protocol() {
+	art.dialog({lock:false,title:'会员注册协议',id:'protocoliframe', iframe:'?m=member&c=index&a=register&protocol=1',width:'500',height:'310',yesText:'同意'}, function(){
+		$("#protocol").attr("checked",true);
+	});
+}
+
+//-->
+</script>
+
+<link type="text/css" rel="stylesheet" href="statics/mglv/newindex.css"/>
+<script type="text/javascript" src="statics/mglv/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="statics/mglv/newmain.js" charset="utf-8"></script>
+
+<link type="statics/css/table_form.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.submit,.pass-logo a,.form-login .input label,.item span,#content h2 span em{display:inline-block;display:-moz-inline-stack;zoom:1;*display:inline;}
+.blue,.blue a{color:#377abe},.submit input{cursor:hand;}
+.log{line-height:24px; height:24px;float:right; font-size:18px}
+.ie8 .log{width: 24px;height: auto;float: left;}
+.log span{color:#ced9e7}
+.log a{color:#049;text-decoration: none;}
+.log a:hover{text-decoration: underline;}
+#header{ height:94px; background:url(statics/images/member/h.png) repeat-x;position: fixed;}
+.ie8 #header{width: 94px;height: auto;background:url(statics/images/member/h-rotate.png) repeat-y;}
+#header .logo{ padding-right:100px;float:right;background:url(statics/images/member/login-logo.png) no-repeat right 2px;}
+.ie8 #header .logo{padding-top: 100px;float: left;background:url(statics/images/member/login-logo-rotate.png) no-repeat left 2px;}
+#header .content{width:920px; margin:auto; height:60px;padding:10px 0 0 0}
+.ie8 #header .content{height: 920px;width: 60px;padding: 0 0 0 10px;}
+#content{ margin:94px auto; padding:20px 70px 0 0; overflow:auto}
+.ie8 #content{margin: auto 94px;padding: 70px 0 0 20px;}
+.form-login{width:420px; padding-left:40px}
+.ie8 .form-login{width: auto;padding-bottom: 40px;}
+#content h2{font-size:25px;color:#494949;border-bottom: 1px dashed #CCC;padding-bottom:3px; margin-bottom:10px}
+.ie8 #content h2{border-right: 1px dashed #ccc;border-bottom: none;padding-right: 3px;padding-bottom: 0;margin-bottom: auto;margin-right: 10px;}
+#content h2 span{font-size:18px; font-weight:normal}
+#content h2 span em{background: url(statics/images/member/order.png) no-repeat 0px -16px; width:15px; height:15px; line-height:15px; text-align:center; margin-right:5px; color:#FFF}
+#content h2 span.on{ color:#333; font-weight:700}
+#content h2 span.on em{background-position: 0px 0px;}
+
+.form-login .input{ padding:7px 0; overflow:hidden; height: 65px;}
+.ie8 .form-login .input{padding: 0 7px;width: 65px;height: auto;}
+.form-login .input label{ width:84px;font-size:20px; color:#000; text-align:right; float:right}
+.ie8 .form-login .input label{height: 84px;width: auto;text-align: left;float: left;}
+.form-login .input .form{ width:560px; float:right}
+.ie8 .form-login .input .form{height: 560px;width: auto;float: left;}
+.take,.reg{padding:0 0 0 84px}
+.ie8 .take, .ie8 .reg{padding: 0 0 84px 0;}
+.take .submit{margin-top:10px}
+.ie8 .take .submit{margin-left: 10px;margin-top: auto}
+.form-login .hr{background: url(statics/images/member/line.png) no-repeat left center; height:50px;}
+.ie8 .form-login .hr{width: 50px;height: auto;}
+.form-login .hr hr{ display:none}
+
+.form-reg{padding:10px 0 0 14px; width:calc(99% - 30px);border-bottom:1px solid #ccc}
+.ie8 .form-reg{padding: 0 0 14px 10px;height: calc(99% - 30px);width: auto;border-right: 1px solid #ccc;border-bottom: none;}
+.form-reg .input label{ width:120px}
+.ie8 .form-reg .input label{height: 120px;width: auto;}
+.form-reg .input label.type{ width:auto; color:#000; padding-right:10px}
+.ie8 .form-reg .input label.type{height: auto;padding-top: 10px;padding-right: 0;}
+.form-reg .reg{padding:10px 0 0 120px}
+.ie8 .form-reg .reg{padding: 0 0 120px 10px;}
+.form-reg .reg .submit{ margin-bottom:5px}
+.ie8 .form-reg .reg .submit{margin-right: 5px;}
+
+/*.submit{padding-left:3px}
+.ie8 .submit{padding-bottom: 3px;padding-left: 0;}*/
+/*.submit{ background: url(/statics/images/member/but.png) no-repeat; height:29px;width:auto;_width:0;overflow:visible !ie}
+.ie8 .submit{width: 29px;height: auto;-ms-writing-mode:tb-lr;background: #FFC962;}*/
+/*.submit input{background-position: right top; border:none; padding:0 10px 0 7px; font-size:20px}
+.ie8 .submit input{padding: 10px 0 7px 0;}*/
+.reg{ color:#666; line-height:24px}
+/*.reg .submit{background-position: left -35px; height:35px}
+.ie8 .reg .submit{width: 35px;height: auto;}*/
+/*.reg .submit input{background-position: right -35px; font-weight:700; color:#fff; height:35px}
+.ie8 .reg .submit input{width: 35px;height: auto;-ms-writing-mode:tb-lr;}*/
+.reg-auto{ padding:10px 0 0 20px}
+.ie8 .reg-auto{padding: 0 0 20px 10px;}
+.reg-auto p{ margin-bottom:10px; color:#666;}
+.ie8 .reg-auto p{margin-right: 10px;margin-bottom: auto;}
+.col-1{position:relative; float:right; border:1px solid #c4d5df; zoom:1;background: url(statics/images/member/member_title.png) repeat-x; width:310px; margin: auto; height:304px}
+.ie8 .col-1{float: left;height: 310px;width: 304px;}
+.col-1 span.o1,
+	.col-1 span.o2,
+	.col-1 span.o3,
+	.col-1 span.o4{position:absolute;width:3px;height:3px;background: url(statics/images/fillet.png) no-repeat}
+	.col-1 span.o1{background-position: left -6px; top:-1px; left:-1px}
+	.col-1 span.o2{background-position: right -6px; top:-1px; right:-1px}
+	.col-1 span.o3{background-position: left bottom; bottom:-1px; left:-1px}
+	.col-1 span.o4{background-position: right bottom; bottom:-1px; right:-1px;}
+.col-1 .title{color:#386ea8; padding:5px 10px 3px}
+.col-1 div.content{padding:0px 10px 10px}
+.col-1 div.content h5{background: url(statics/images/member/ext-title.png) no-repeat 2px 10px; height:34px}
+.col-1 div.content h5 strong{ visibility: hidden}
+.pass-logo{ margin:auto; width:261px; padding-top:15px}
+.pass-logo a img{ border:1px solid #ddd}
+.pass-logo a{border:3px solid #fff}
+.pass-logo a.logo,
+.pass-logo a:hover{border:3px solid #e8f1f1;}
+.pass-logo p{border-top: 1px solid #e1e4e8; padding-top:15px}
+.item{padding:10px 0; vertical-align:middle; margin-bottom:10px}
+.item span{ color:#8c8686}
+
+#footer{color:#666; line-height:24px;width:620px; margin:auto; text-align:center; padding:12px 0; margin-top:52px; border-top:1px solid #e5e5e5}
+.ie8 #footer{height: 620px;width: auto;padding: 0 12px;margin-left: 52px;margin-top: auto;border-left: 1px solid #e5e5e5;}
+#footer a{color:#666;}
+
+.point{border:2px solid #0099cc; background:#fffced; margin-bottom:10px; margin-right:100px;margin-left:50px;}
+.ie8 .point{margin: 100px 10px 50px 0;}
+.point .content{padding:8px 10px;}
+.ie8 .point .content{padding: 10px 8px;}
+.point .content .title{color:#ff8400}
+.point .content p{color:#777; text-indent:20px}
+.point span.o1,
+	.point span.o2,
+	.point span.o3,
+	.point span.o4{position:absolute;width:3px;height:3px;background: url(statics/images/fillet.png) no-repeat; overflow:hidden}
+	.point span.o1{background-position: left top; top:-1px; left:-1px}
+	.point span.o2{background-position: right top; top:-1px; right:-1px}
+	.point span.o3{background-position: left -3px; bottom:-1px; left:-1px}
+	.point span.o4{background-position: right -3px; bottom:-1px; right:-1px;}
+.submit button.hqyz{margin:0px; padding:0px; border:none; cursor:pointer; }
+.submit button.hqyz{
+    background-position: 100% 0%;
+    border: medium none;
+    font-size: 12px;
+    padding: 0 10px 0 7px;
+}
+.submit button.hqyz{
+    background: url("statics/images/member/but.png") no-repeat 100% 0px;
+    height: 29px;
+    width: auto;
+
+}
+
+#mobile_div input{*margin-bottom:12px;*_padding:0px 0px 6px 0px}
+
+.btn-green-small,.btn-green-small:hover{padding:3px 10px;  background:#0099cc;width:100px;height:32px;line-height:24px;font-size:18px;color:#fff;text-align:center;border-radius:2px;-webkit-border-radius:2px;-moz-border-radius:2px;-khtml-border-radius:2px;}
+.ie8 .btn-green-small,.ie8 .btn-green-small:hover{width: 28px;height: 100px;background:#0099cc;}
+.ie8 input.btn-green-small {-ms-writing-mode:tb-lr;line-height: 5px;}
+.s-text, .input-text {border: 1px solid #0099cc;background: #fff}
+</style>
+</head>
+<body>
+<div id="header" class="transbox">
+	<div class="content">
+	<div class="logo">
+                <img height="66" src="statics/images/v9/logo-rotate.png"/>
+            </div>
+    <span class="log"></span>
+    </div>
+</div>s
+<div id="main" class="vertical">
+<div id="content">
+	<h2> &nbsp;&nbsp;&nbsp;&nbsp;<span class="on"><em>1</em>  </span>
+		</h2>
+
+<form method="post" action="" id="myform">
+	<input type="hidden" name="siteid" value="1" />
+
+	<div class="form-login form-reg">
+
+				<!--是否开启选择会员模型选项-->
+    	<div class="point">
+            <div class="content">
+				<strong class="title"></strong>
+				<p>                 </p>
+				<p>普通会员</p>
+            </div>
+            <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+        </div>
+
+		<div class="input"><label>   ：</label>
+						<label class="type"><input name="modelid" type="radio" value="10" checked onclick="changemodel($(this).val())" />  </label>
+					</div>
+
+        <table>
+            <tr><td>
+    	        <div class="input"><label>  ：</label><input type="text" id="username" name="username" size="30" class="input-text s-text"></div>
+            </td></tr>
+            <tr><td>
+                <div class="input"><label> ：</label><input type="password" id="password" name="password" size="30" class="input-text s-text"></div>
+            </td></tr>
+            <tr><td>
+                <div class="input"><label>   ：</label><input type="password" name="pwdconfirm" id="pwdconfirm" size="30" class="input-text s-text"></div>
+            </td></tr>
+            <tr><td>
+                <div class="input"><label>E-mail：</label><input type="text" id="email" name="email" size="30" class="input-text s-text"></div>
+		        <div class="input"><label> ：</label><input type="text" id="nickname" name="nickname" size="30"  class="input-text s-text"></div>
+            </td></tr>
+        </table>
+					<!--是否开启选择会员模型选项-->
+			<!-- <script language="JavaScript">
+			<!--
+				function changemodel(modelid) {
+					redirect('http://v.mgyxw.net/index.php?m=member&c=index&a=register&modelid='+modelid+'&siteid=1');
+				}
+			//-->
+			</script> -->
+
+
+
+
+
+		<!-- 注释验证码
+
+		-->
+        	<div class="reg">
+                <div class="submit"><input type="submit" name="dosubmit" class="btn-green-small" value=""></div><br />
+                <!--<input type="checkbox" name="protocol" id="protocol" value=""><a href="javascript:void(0);" onclick="show_protocol();return false;" class="blue">     </a>-->
+            </div>
+        </div>
+</form>
+
+    <div class="col-auto reg-auto">
+        <table><tr><td>
+    <p class="f14">
+             <br />        </p>
+            </td></tr>
+            <tr><td>
+    <div class=""><a class="btn-green-small" type="submit" name="dosubmit"href="#" onclick="redirect('http://v.mgyxw.net/index.php?m=member&c=index&a=login')"></a></div>
+</td></tr></table>
+</div>
+
+<script type="text/javascript">
+    ieInput("#username|#email|#nickname");
+</script>
+</div>
+<div id="footer" class="">
+<!--<a href="http://v.mgyxw.net/index.php?m=link" target="_blank">  </a>-->
+
+<!--<p class="cp">Powered by <strong><a href="http://www.boljoo.com" target="_blank">Boljoo</a></strong>  &copy; 2017 <img src="/statics/images/copyright.gif"/>
+</p>-->
+    <p>     ©          </p>
+</div>
+</div>
+</body>
+</html>
