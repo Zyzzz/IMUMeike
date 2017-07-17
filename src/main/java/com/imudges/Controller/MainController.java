@@ -12,7 +12,7 @@ public class MainController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
-        return "index";
+        return "/WEB-INF/pages/index.html";
     }
 
     @RequestMapping(value = "/O_index", method = RequestMethod.GET)
